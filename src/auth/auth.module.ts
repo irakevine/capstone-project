@@ -10,7 +10,6 @@ import { JwtModule } from '@nestjs/jwt';
 import 'dotenv/config';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { SendGrindService } from './../notifications/sendgrid.service';
-import { VerificationCode } from './entities/verification-code.entity';
 import { NotificationsModule } from '../notifications/notifications.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BcryptService } from '../shared/util/bcrypt.service';
@@ -19,7 +18,7 @@ import { SmsService } from '../notifications/sms.service';
 @Global()
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, VerificationCode]),
+    TypeOrmModule.forFeature([User]),
     NotificationsModule,
     forwardRef(() => UsersModule),
     PassportModule,

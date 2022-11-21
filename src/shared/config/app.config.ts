@@ -26,8 +26,8 @@ export const testingConfig = (): AppConfig => ({
  * @param app The NestJS Application instance
  */
 export function configureSwagger(app: INestApplication): void {
-  const API_TITLE = 'Harambee API';
-  const API_DESCRIPTION = 'API Doc. for Harambee API';
+  const API_TITLE = 'Capstone API';
+  const API_DESCRIPTION = 'API Doc. for Capstone API';
   const API_VERSION = '1.0';
   const SWAGGER_URL = 'docs/swagger-ui';
   const options = new DocumentBuilder()

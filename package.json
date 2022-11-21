@@ -1,5 +1,5 @@
 {
-    "name": "harambee-api",
+    "name": "capstone_api",
     "version": "0.0.1",
     "description": "",
     "author": "",
@@ -9,11 +9,11 @@
         "prebuild": "rimraf dist",
         "build": "nest build",
         "format": "prettier --write \"src /**/*.ts\" \"test /**/*.ts\"",
-        "start": "yarn typeorm:run && nest start",
+        "start": "npm run typeorm:run && nest start",
         "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
-        "start:dev": "set NODE_ENV=development && yarn typeorm:run && nest start --watch",
+        "start:dev": "set NODE_ENV=development && npm run typeorm:run && nest start --watch",
         "start:debug": "set NODE_ENV=development && nest start --debug --watch",
-        "start:prod": "set NODE_ENV=production && yarn typeorm:run && node dist/main",
+        "start:prod": "set NODE_ENV=production && npm run typeorm:run && node dist/main",
         "start:stg": "set NODE_ENV=staging && node dist/src/main",
         "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
         "test": "jest --runInBand",
@@ -22,9 +22,9 @@
         "test:debug": "set NODE_ENV=test && node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
         "test:e2e": "set NODE_ENV=test && jest --config ./jest-e2e.json --coverage",
         "typeorm-custom-config": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/shared/config/typeorm.config.ts",
-        "typeorm:create": "yarn typeorm-custom-config migration:create -n",
-        "typeorm:sync": "yarn build && yarn typeorm-custom-config migration:generate -n",
-        "typeorm:run": "yarn build && yarn typeorm-custom-config migration:run"
+        "typeorm:create": "npm run typeorm-custom-config migration:create -n",
+        "typeorm:sync": "npm run build && npm run typeorm-custom-config migration:generate -n",
+        "typeorm:run": "npm run build && npm run typeorm-custom-config migration:run"
     },
     "dependencies": {
         "@nestjs/axios": "^0.0.8",
@@ -73,7 +73,7 @@
         "typeorm": "0.2.41",
         "typeorm-seeding": "^1.6.1",
         "xlsx": "^0.18.5",
-        "yarn": "^1.22.18"
+        "npm run": "^1.22.18"
     },
     "devDependencies": {
         "@nestjs/cli": "^7.6.0",

@@ -8,7 +8,6 @@ import {
   Matches,
   MinLength,
 } from 'class-validator';
-import { VerifyBy } from '../../shared/enums/verify-by.enum';
 import { Gender } from './../../shared/enums/gender.enum';
 
 export class CreateUserDto {
@@ -38,9 +37,7 @@ export class CreateUserDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsEnum(Gender, {
-    message: `gender value can either be 'm' for male or 'f' for female`,
-  })
+  @IsEnum(Gender)
   gender: Gender;
 
   @ApiProperty()
@@ -48,14 +45,4 @@ export class CreateUserDto {
   @IsString()
   @MinLength(13)
   phoneNumber: string;
-
-  @ApiProperty()
-  @IsEnum(VerifyBy)
-  @IsNotEmpty()
-  verifyBy: VerifyBy;
-
-  @ApiProperty({ default: false })
-  @IsBoolean()
-  @IsNotEmpty()
-  agreed: boolean;
 }

@@ -11,6 +11,10 @@ import { ResponseTransformInterceptor } from './shared/interceptors/response-tra
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { BcryptService } from './shared/util/bcrypt.service';
+import { Module, OnApplicationBootstrap } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 
 
 @Module({
@@ -34,47 +38,13 @@ import { BcryptService } from './shared/util/bcrypt.service';
     { provide: APP_INTERCEPTOR, useClass: ResponseTransformInterceptor },
     { provide: APP_INTERCEPTOR, useClass: ClassTransformInterceptor },
     AppService,
-    UserSeedService,
-    SpecializationPreferenceSeedService,
-    EducationPreferenceSeedService,
-    LanguagePreferenceSeedService,
-    GradingPreferenceSeedService,
-    OpportunityTypePreferenceSeedService,
-    EmploymentStatusPreferenceSeedService,
-    AssessmentRequestSeedService,
-    AssessmentSeedService,
-    GradesSeedService,
     BcryptService,
-    InterestPreferenceSeedService,
-    ProgramPreferenceSeedService,
   ],
 })
 export class AppModule implements OnApplicationBootstrap {
   constructor(
-    private readonly userSeedService: UserSeedService,
-    private readonly educationSeedService: EducationPreferenceSeedService,
-    private readonly specializationSeedService: SpecializationPreferenceSeedService,
-    private readonly languageSeedService: LanguagePreferenceSeedService,
-    private readonly gradingSeedService: GradingPreferenceSeedService,
-    private readonly opportunityTypePreferenceSeedService: OpportunityTypePreferenceSeedService,
-    private readonly employmentStatusSeedService: EmploymentStatusPreferenceSeedService,
-    private readonly gradesSeedService: GradesSeedService,
-    private readonly assessmentSeedService: AssessmentSeedService,
-    private readonly assessmentRequestSeedService: AssessmentRequestSeedService,
-    private readonly interestPreferenceSeedService: InterestPreferenceSeedService,
-    private readonly programPreferenceSeedService: ProgramPreferenceSeedService,
+
   ) {}
   async onApplicationBootstrap() {
-    await this.userSeedService.seed();
-    await this.educationSeedService.seed();
-    await this.languageSeedService.seed();
-    await this.specializationSeedService.seed();
-    await this.gradingSeedService.seed();
-    await this.opportunityTypePreferenceSeedService.seed();
-    await this.employmentStatusSeedService.seed();
-    await this.assessmentSeedService.seed();
-    await this.assessmentRequestSeedService.seed();
-    await this.interestPreferenceSeedService.seed();
-    await this.programPreferenceSeedService.seed();
   }
 }
