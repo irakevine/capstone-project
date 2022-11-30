@@ -9,7 +9,7 @@ const typeormConfig: TypeOrmModuleOptions = {
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
   type: 'postgres',
-  synchronize: false,
+  synchronize: true,
   keepConnectionAlive: true,
   // dropSchema: !isRunningInProduction(),
   logging: !isRunningInProduction(),

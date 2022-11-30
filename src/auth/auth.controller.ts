@@ -38,9 +38,10 @@ export class AuthController {
   async registerCandidate(
     @Body() createUserDto: CreateUserDto,
   ): Promise<GenericResponse<void>> {
+    const result =await this.authService.registrUser(createUserDto)
     return {
       message: "User registered successfully",
-      results: null,
+      results: result,
     };
   }
 }

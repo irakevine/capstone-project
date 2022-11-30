@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getHello(): any {
     return {
-      message: 'Welcome to harambee API',
+      message: 'Welcome to Capstone project API',
     };
   }
 }

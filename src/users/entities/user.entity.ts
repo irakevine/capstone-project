@@ -42,6 +42,7 @@ export class User extends Audit {
   @Column({ default: false, nullable: true })
   isVerified: boolean;
 
+
   @ApiProperty()
   @Column({ default: UserRole.STANDARD, nullable: false })
   role: UserRole;
