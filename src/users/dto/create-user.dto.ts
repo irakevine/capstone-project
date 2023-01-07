@@ -1,14 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
-  IsEnum,
   IsNotEmpty,
   IsString,
   Matches,
   MinLength,
 } from 'class-validator';
-import { Gender } from './../../shared/enums/gender.enum';
-
 export class CreateUserDto {
   @ApiProperty()
   @IsEmail()
@@ -27,21 +24,16 @@ export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  firstName: string;
+  first_name: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  lastName: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsEnum(Gender)
-  gender: Gender;
+  last_name: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
   @MinLength(13)
-  phoneNumber: string;
+  phone_number: string;
 }

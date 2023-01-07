@@ -1,4 +1,3 @@
-
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { runtimeConfig } from './shared/config/app.config';
@@ -15,7 +14,6 @@ import { Module, OnApplicationBootstrap } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
-
 
 @Module({
   imports: [
@@ -42,9 +40,6 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
   ],
 })
 export class AppModule implements OnApplicationBootstrap {
-  constructor(
-
-  ) {}
-  async onApplicationBootstrap() {
-  }
+  constructor() {}
+  async onApplicationBootstrap() {}
 }

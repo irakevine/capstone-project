@@ -15,10 +15,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BcryptService } from '../shared/util/bcrypt.service';
 import { JwtRefreshTokenStrategy } from './strategies/refresh-jwt.strategy';
 import { SmsService } from '../notifications/sms.service';
+import { Code } from 'src/users/entities/code.entity';
+
 @Global()
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, Code]),
     NotificationsModule,
     forwardRef(() => UsersModule),
     PassportModule,

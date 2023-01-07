@@ -43,7 +43,7 @@ export function configureSwagger(app: INestApplication): void {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup(SWAGGER_URL, app, document, {
-    customSiteTitle: 'HARAMBEE API',
+    customSiteTitle: 'CAPSTONE API',
     swaggerOptions: { docExpansion: 'none', persistAuthorization: true },
   });
 }

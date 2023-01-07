@@ -1,8 +1,9 @@
-import { Gender } from './../../shared/enums/gender.enum';
 import { UserRole } from './../../shared/enums/user-roles.enum';
 import {
   Column,
   Entity,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import Audit from '../../shared/interface/audit.entity';
@@ -20,35 +21,41 @@ export class User extends Audit {
   email: string;
 
   @Column({ nullable: false })
-  password?: string;
+  password: string;
+
+  @ApiProperty()
+  @Column({ name: 'first_name' })
+  first_name: string;
 
   @ApiProperty()
   @Column()
-  firstName: string;
-
-  @ApiProperty()
-  @Column()
-  lastName: string;
-
-  @ApiProperty()
-  @Column({ nullable: true })
-  gender: Gender;
+  last_name: string;
 
   @ApiProperty()
   @Column({ unique: true, nullable: false })
-  phoneNumber: string;
-
-  @ApiProperty()
-  @Column({ default: false, nullable: true })
-  isVerified: boolean;
+  phone_number: string;
 
 
   @ApiProperty()
   @Column({ default: UserRole.STANDARD, nullable: false })
   role: UserRole;
 
-  @Column({ type: 'timestamptz', nullable: true })
-  lastLogin: Date;
+  @ManyToOne(() => User, (user) => user.employee, {
+    onDelete: 'SET NULL',
+    onUpdate: 'SET NULL',
+  })
+  manager: User;
+
+  @OneToMany(() => User, (user) => user.manager)
+  employee: User[];
+
+  @ApiProperty()
+  @Column({ default: false, nullable: true })
+  active: boolean;
+
+  @ApiProperty()
+  @Column({ default: false, nullable: false })
+  isVerified: boolean;
 
   @Column({ nullable: true })
   @Exclude()
