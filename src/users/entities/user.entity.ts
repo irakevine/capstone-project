@@ -9,6 +9,7 @@ import {
 import Audit from '../../shared/interface/audit.entity';
 import { Exclude } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
+import { Department } from 'src/department/entities/department.entity';
 
 @Entity()
 export class User extends Audit {
@@ -35,7 +36,6 @@ export class User extends Audit {
   @Column({ unique: true, nullable: false })
   phone_number: string;
 
-
   @ApiProperty()
   @Column({ default: UserRole.STANDARD, nullable: false })
   role: UserRole;
@@ -48,6 +48,9 @@ export class User extends Audit {
 
   @OneToMany(() => User, (user) => user.manager)
   employee: User[];
+
+  @OneToMany(() => Department, (department) => department.hod)
+  hods: User[];
 
   @ApiProperty()
   @Column({ default: false, nullable: true })

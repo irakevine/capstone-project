@@ -17,6 +17,7 @@ export class Code {
   @ApiProperty()
   @Column({ name: 'code', nullable: false })
   code: string;
+
   @ApiProperty()
   @Column({ nullable: false })
   expiryDate: Date;
