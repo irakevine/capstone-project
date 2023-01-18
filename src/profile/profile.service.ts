@@ -5,7 +5,6 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { omit } from 'lodash';
-import { UserRole } from 'src/shared/enums/user-roles.enum';
 import { Repository } from 'typeorm';
 import { Department } from '../department/entities/department.entity';
 import { User } from '../users/entities/user.entity';

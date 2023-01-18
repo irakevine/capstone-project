@@ -20,13 +20,11 @@ import {
   ApiTags,
   ApiCookieAuth,
   ApiCreatedResponse,
-  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { Profile } from './entities/profile.entity';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { GetUser } from '../auth/decorators/get-user.decorator';
 import { User } from '../users/entities/user.entity';
-import { omit } from 'lodash';
 import { getGenericResponseSchema } from 'src/shared/util/swagger.util';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { UserRole } from 'src/shared/enums/user-roles.enum';

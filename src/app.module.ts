@@ -16,6 +16,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { DepartmentModule } from './department/department.module';
+import { UserSeedService } from './seeds/user-seeds.service';
 
 @Module({
   imports: [
@@ -41,9 +42,12 @@ import { DepartmentModule } from './department/department.module';
     { provide: APP_INTERCEPTOR, useClass: ClassTransformInterceptor },
     AppService,
     BcryptService,
+    UserSeedService,
   ],
 })
 export class AppModule implements OnApplicationBootstrap {
-  constructor() {}
-  async onApplicationBootstrap() {}
+  constructor(private readonly userSeeds: UserSeedService) {}
+  async onApplicationBootstrap() {
+    await this.userSeeds.seed();
+  }
 }
